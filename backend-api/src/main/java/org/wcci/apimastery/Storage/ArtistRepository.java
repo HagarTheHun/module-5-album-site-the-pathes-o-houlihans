@@ -1,4 +1,4 @@
-package Storage;
+package org.wcci.apimastery.Storage;
 
 import org.springframework.data.repository.CrudRepository;
 

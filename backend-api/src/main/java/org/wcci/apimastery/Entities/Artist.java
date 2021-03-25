@@ -1,4 +1,4 @@
-package Entities;
+package org.wcci.apimastery.Entities;
 
 
 import javax.persistence.Entity;
