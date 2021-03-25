@@ -1,4 +1,8 @@
 package Storage;
 
-public class ArtistStorage {
+import Entities.Artist;
+
+public interface ArtistStorage {
+     Iterable<Artist> retrieveAllArtist();
+     Artist retrieveArtistById(Long Id);
 }

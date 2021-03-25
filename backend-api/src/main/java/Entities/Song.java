@@ -15,7 +15,7 @@ public class Song {
     private String releaseDate;
     private boolean isSingle;
     private int duration;
-    private Artist artist;
+//    private Artist artist;
 //    private Collection<Album> albums;
 //    private Collection<SongComments> songCommentSection;
 
@@ -43,7 +43,7 @@ public class Song {
         return duration;
     }
 
-    public Artist getArtist() {
-        return artist;
-    }
+//    public Artist getArtist() {
+//        return artist;
+//    }
 }
