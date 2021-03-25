@@ -1,23 +1,37 @@
 package org.wcci.apimastery.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 public class Artist {
     @Id
     @GeneratedValue
-    private Long id;
+    private long id;
     private String name;
+    @ManyToMany(mappedBy = "artist")
+    private Collection<Song> songs;
+    @ManyToMany
+    @JsonIgnore
+    private Collection<Album> albums;
 
-    public Artist(Long id, String name) {
-        this.id = id;
+    public Artist (String name) {
         this.name = name;
+        this.songs = new ArrayList<>();
+        this.albums = new ArrayList<>();
+    }
+    public Artist () {
+
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -25,8 +39,14 @@ public class Artist {
         return name;
     }
 
-    protected Artist(){
+    public Collection<Song> getSongs() {
+        return songs;
+    }
 
+    public Collection<Album> getAlbums() {
+        return albums;
     }
 
 }
+
+
