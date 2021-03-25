@@ -16,9 +16,10 @@ a {
     justify-content: center;
 }
 
-.albumList {
+.flex-container {
     display: flex;
-    justify-content: center;
+    /* justify-content: space-evenly; */
+    flex-flow: row wrap;
 }
 
 footer {
@@ -26,8 +27,12 @@ footer {
     justify-content: center;
 }
 
-li {
+ul{
     list-style: none;
+}
+
+li {
+    /* list-style: none; */
 }
 
 .linkImg {
