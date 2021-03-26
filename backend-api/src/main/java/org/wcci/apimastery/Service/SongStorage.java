@@ -5,9 +5,15 @@ import org.wcci.apimastery.Entities.Song;
 
 @Service
 public class SongStorage {
-    SongRepository songRepo;
+    SongRepository songRepository;
 
-    public SongStorage (SongRepository songRepo) {
-        this.songRepo = songRepo;
+    public SongStorage(SongRepository songRepository) {
+        this.songRepository = songRepository;
     }
+    public Iterable<Song> retrieveAllSong() {
+        return songRepository.findAll();
+    }
+
+
+
 }

@@ -10,14 +10,14 @@ public class Album {
     @GeneratedValue
     private long Id;
     private String name;
-    @ManyToMany
-    private Collection<Artist> artist;
+    private String artist;
+
     @OneToMany
     private Collection<Song> songs;
 
-    public Album(String name) {
+    public Album(String name, String artist) {
         this.name = name;
-        this.artist = new ArrayList<>();
+        this.artist = artist;
         this.songs = new ArrayList<>();
     }
     public Album () {
@@ -32,7 +32,7 @@ public class Album {
         return name;
     }
 
-    public Collection<Artist> getArtist() {
+    public String getArtist() {
         return artist;
     }
 
