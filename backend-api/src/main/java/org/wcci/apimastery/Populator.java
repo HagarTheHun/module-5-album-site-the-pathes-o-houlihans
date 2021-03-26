@@ -24,9 +24,32 @@ import org.wcci.apimastery.Service.SongStorage;
     public void run(String... args) throws Exception {
         Album album1 = new Album("album1" , "Mike");
         albumStorage.saveAlbum(album1);
+        Album album2 = new Album("album2", "Luke");
+        albumStorage.saveAlbum(album2);
+        Album album3 = new Album("album3", "Keshav");
+        albumStorage.saveAlbum(album3);
+        Album album4 = new Album("album4", "Cow");
+        albumStorage.saveAlbum(album4);
+        Album album5 = new Album("album5", "John");
+        albumStorage.saveAlbum(album5);
+        Album album6 = new Album("album6", "Billy");
+        albumStorage.saveAlbum(album6);
+
 
         Song song1 = new Song("song1");
         songRepository.save(song1);
+        Song song2 = new Song("song2");
+        songRepository.save(song2);
+        Song song3 = new Song("song3");
+        songRepository.save(song3);
+        Song song4 = new Song("song4");
+        songRepository.save(song4);
+        Song song5 = new Song("song5");
+        songRepository.save(song5);
+        Song song6 = new Song("song6");
+        songRepository.save(song6);
+
+
 
     }
 }

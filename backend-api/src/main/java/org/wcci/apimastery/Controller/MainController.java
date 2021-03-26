@@ -1,6 +1,7 @@
 package org.wcci.apimastery.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.wcci.apimastery.Entities.Album;
 import org.wcci.apimastery.Service.AlbumStorage;
@@ -19,6 +20,10 @@ public class MainController {
               return albumStorage.retrieveAllAlbum();
         }
 
-
+        @GetMapping("/api/albums/{id}")
+        public Album retrieveAlbumById(@PathVariable Long id){
+            return albumStorage.retrieveAlbumById(id);
+        }
     }
+
 

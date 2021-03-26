@@ -9,8 +9,8 @@ import java.util.Collection;
 public class AlbumStorage {
     private AlbumRepository albumRepository;
 
-    public AlbumStorage(AlbumRepository albumRepository) {
-        this.albumRepository = albumRepository;
+    public AlbumStorage(AlbumRepository albumRepo) {
+        this.albumRepository = albumRepo;
     }
     public Iterable<Album> retrieveAllAlbum(){
         return albumRepository.findAll();
@@ -20,4 +20,7 @@ public class AlbumStorage {
    public void saveAlbum(Album albumToSave){
         albumRepository.save(albumToSave);
    }
-}
+
+    public Album retrieveAlbumById(Long id) { return albumRepository.findById(id).get();}
+    }
+
