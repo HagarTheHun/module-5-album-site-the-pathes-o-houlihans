@@ -16,10 +16,11 @@ a {
     justify-content: center;
 }
 
-.flex-container {
+.albumList {
     display: flex;
-    /* justify-content: space-evenly; */
-    flex-flow: row wrap;
+    /* flex-direction: ; */
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 footer {
@@ -27,19 +28,22 @@ footer {
     justify-content: center;
 }
 
-ul{
-    list-style: none;
-}
-
 li {
-    /* list-style: none; */
+    list-style: none;
 }
 
 .linkImg {
     height: 200px;
     width: 200px;
 }
-
+.songTitle {
+    display: flex;
+    justify-content: center;
+}
+.songArtist {
+    display: flex;
+    justify-content: center;
+}
 /* a:hover {
     text-decoration: underline; 
 }*/
