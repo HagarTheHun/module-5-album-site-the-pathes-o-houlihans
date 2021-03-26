@@ -10,13 +10,15 @@ public class MainController {
     private AlbumStorage albumStorage;
 
 
-    public AlbumController(AlbumStorage albumStorage){
+    public MainController(AlbumStorage albumStorage){
         this.albumStorage = albumStorage;
+        }
 
         @GetMapping("/api/albums")
         public Iterable<Album> retrieveAllAlbum(){
               return albumStorage.retrieveAllAlbum();
         }
 
+
     }
-}
+

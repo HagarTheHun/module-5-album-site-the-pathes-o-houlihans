@@ -1,2 +1,2 @@
 ###
-#GET localhost:8080/api/albums
+GET localhost:8080/api/albums
