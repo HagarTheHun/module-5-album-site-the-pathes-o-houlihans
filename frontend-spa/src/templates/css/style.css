@@ -44,6 +44,39 @@ li {
     display: flex;
     justify-content: center;
 }
+
+/* .songLyrics {
+    display: flex;
+    justify-content: center;
+} */
+.songDetails {
+    border: 25px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.songDurationLine {
+    /* display: flex;
+    justify-content: center; */
+}
+.lyricsIntro {
+    /* display: flex;
+    justify-content: center; */
+}
+.songLyrics {
+    border: 5px solid blue;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 400px;
+    
+   
+    
+}
 /* a:hover {
     text-decoration: underline; 
 }*/
