@@ -18,6 +18,8 @@ a {
 
 .albumList {
     display: flex;
+    /* flex-direction: ; */
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -34,7 +36,14 @@ li {
     height: 200px;
     width: 200px;
 }
-
+.songTitle {
+    display: flex;
+    justify-content: center;
+}
+.songArtist {
+    display: flex;
+    justify-content: center;
+}
 /* a:hover {
     text-decoration: underline; 
 }*/
