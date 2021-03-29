@@ -12,7 +12,7 @@ public class AlbumStorage {
     public AlbumStorage(AlbumRepository albumRepo) {
         this.albumRepository = albumRepo;
     }
-    public Iterable<Album> retrieveAllAlbum(){
+    public Iterable<Album> retrieveAllAlbums(){
         return albumRepository.findAll();
     }
 
@@ -22,5 +22,9 @@ public class AlbumStorage {
    }
 
     public Album retrieveAlbumById(Long id) { return albumRepository.findById(id).get();}
-    }
+
+
+    public void deleteAlbumById(Long id) { albumRepository.deleteById(id);}
+}
+
 

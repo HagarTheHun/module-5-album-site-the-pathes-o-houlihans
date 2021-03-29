@@ -1,5 +1,7 @@
 package org.wcci.apimastery.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,12 +16,22 @@ public class Song {
 //    private String releaseDate;
 //    private boolean isSingle;
 //    private int duration;
-    @OneToMany
-    private Collection<Album> albums;
+    @ManyToOne
+    @JsonIgnore
+    private Album album;
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
 
 
-    public Song(String title) {
+    public Song(String title, Album album) {
         this.title = title;
+        this.album = album;
 //        this.releaseDate = releaseDate;
 //        this.isSingle = isSingle;
 //        this.duration = duration;
@@ -50,9 +62,9 @@ public class Song {
 //        return duration;
 //    }
 
-    public Collection<Album> getAlbums() {
-        return albums;
-    }
+//    public Collection<Album> getAlbums() {
+//        return album;
+//    }
 
 
 }

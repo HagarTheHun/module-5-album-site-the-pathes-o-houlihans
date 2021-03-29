@@ -8,12 +8,16 @@ import java.util.Collection;
 public class Album {
     @Id
     @GeneratedValue
-    private long Id;
+    private Long Id;
     private String name;
     private String artist;
 
-    @OneToMany
+    @OneToMany(mappedBy = "album")
     private Collection<Song> songs;
+
+    public void setSongs(Collection<Song> songs) {
+        this.songs = songs;
+    }
 
     public Album(String name, String artist) {
         this.name = name;
@@ -24,7 +28,7 @@ public class Album {
 
     }
 
-    public long getId() {
+    public Long getId() {
         return Id;
     }
 

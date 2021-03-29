@@ -36,17 +36,17 @@ import org.wcci.apimastery.Service.SongStorage;
         albumStorage.saveAlbum(album6);
 
 
-        Song song1 = new Song("song1");
+        Song song1 = new Song("song1", album1);
         songRepository.save(song1);
-        Song song2 = new Song("song2");
+        Song song2 = new Song("song2", album1);
         songRepository.save(song2);
-        Song song3 = new Song("song3");
+        Song song3 = new Song("song3",album3);
         songRepository.save(song3);
-        Song song4 = new Song("song4");
+        Song song4 = new Song("song4",album4);
         songRepository.save(song4);
-        Song song5 = new Song("song5");
+        Song song5 = new Song("song5",album3);
         songRepository.save(song5);
-        Song song6 = new Song("song6");
+        Song song6 = new Song("song6",album6);
         songRepository.save(song6);
 
 
