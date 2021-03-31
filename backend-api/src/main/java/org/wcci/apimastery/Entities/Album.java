@@ -11,6 +11,7 @@ public class Album {
     private Long Id;
     private String name;
     private String artist;
+    private String img;
 
     @OneToMany(mappedBy = "album")
     private Collection<Song> songs;
@@ -22,7 +23,10 @@ public class Album {
     public Album(String name, String artist) {
         this.name = name;
         this.artist = artist;
+        this.img = img;
         this.songs = new ArrayList<>();
+
+
     }
     public Album () {
 
@@ -38,6 +42,10 @@ public class Album {
 
     public String getArtist() {
         return artist;
+    }
+
+    public String getImg() {
+        return img;
     }
 
     public Collection<Song> getSongs() {
