@@ -21,12 +21,12 @@ const displayHomeView = function (albums) {
 
     albums.forEach(album => {
         let albumElement = document.createElement("li");
-        albumElement.innerText = album.name;
-        let albumImageElement = document.createElement("img");
-        albumImageElement.classList.add("linkImg");
-        albumElement.appendChild(albumImageElement);
-        albumImageElement.currentSrc(album.coverImage);
-
+        //albumElement.innerText = album.name;
+        let albumLink = document.createElement("a");
+        albumLink.setAttribute("href", "/albums/" + album.id)
+        albumLink.innerHTML = `<img class="linkImg" src="${album.img}">`
+        albumElement.appendChild(albumLink)
+        ulElement.appendChild(albumElement);
     });
     return mainElement;
 
@@ -35,8 +35,11 @@ const displayHomeView = function (albums) {
 export{displayHomeView
 } 
 
+/* <img src="/files/16797/clock-demo-200px.png"
+       alt="Clock"
+       srcset="/files/16864/clock-demo-200px.png 1x, /files/16797/clock-demo-400px.png 2x"></img> */
 
-{/* <main class="main-content">
+/* <main class="main-content">
 <div id="description-box">
     <p class="description">This site is to review albums and songs from many artisits.</p>
 </div>
@@ -54,4 +57,4 @@ export{displayHomeView
         </ul>
     </p>
 </div>
-</main> */}
+</main> */
