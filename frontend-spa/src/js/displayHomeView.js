@@ -21,14 +21,20 @@ const displayHomeView = function (albums) {
 
     albums.forEach(album => {
         let albumElement = document.createElement("li");
-        // albumElement.classList.add("album");
+        albumElement.innerText = album.name;
         let albumImageElement = document.createElement("img");
         albumImageElement.classList.add("linkImg");
         albumElement.appendChild(albumImageElement);
         albumImageElement.currentSrc(album.coverImage);
 
-    })
+    });
+    return mainElement;
+
 }
+
+export{displayHomeView
+} 
+
 
 {/* <main class="main-content">
 <div id="description-box">
