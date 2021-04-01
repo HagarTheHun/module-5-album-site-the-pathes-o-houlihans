@@ -1,3 +1,5 @@
+//import { displayAlbumView } from "./displayAlbumView";
+
 const displayHomeView = function (albums) {
     const mainElement = document.createElement("main");
     mainElement.classList.add("main-content");
@@ -10,6 +12,7 @@ const displayHomeView = function (albums) {
     pElement.classList.add("description");
     descriptionElement.appendChild(pElement);
     pElement.innerHTML = '<p class="description">This site is to review albums and songs from many artisits.</p>';
+
 
     const sectionElement = document.createElement("div");
     sectionElement.classList.add("albumList");
@@ -27,12 +30,17 @@ const displayHomeView = function (albums) {
         albumLink.innerHTML = `<img class="linkImg" src="${album.img}">`
         albumElement.appendChild(albumLink)
         ulElement.appendChild(albumElement);
+
+        // albumLink.addEventListener("click", () =>
+        //  displayAlbumView(album)
+        // );
     });
     return mainElement;
 
 }
 
-export{displayHomeView
+export{
+    displayHomeView
 } 
 
 /* <img src="/files/16797/clock-demo-200px.png"

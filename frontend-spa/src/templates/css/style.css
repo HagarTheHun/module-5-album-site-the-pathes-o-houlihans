@@ -16,6 +16,11 @@ a {
     justify-content: center;
 }
 
+.description-box {
+    display: flex;
+    justify-content: center;
+}
+
 .flex-container {
     display: flex;
     /* flex-direction: ; */
