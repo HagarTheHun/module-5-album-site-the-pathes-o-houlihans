@@ -2,8 +2,8 @@ package org.wcci.apimastery.Controller;
 
 import org.springframework.web.bind.annotation.*;
 import org.wcci.apimastery.Entities.Album;
+import org.wcci.apimastery.Entities.Song;
 import org.wcci.apimastery.Service.AlbumStorage;
-import org.wcci.apimastery.Service.SongRepository;
 
 @RestController
 public class MainController {
@@ -27,11 +27,17 @@ public class MainController {
         return albumStorage.retrieveAlbumById(id);
     }
 
+//    @DeleteMapping("/api/albums/{id}")
+//    public void deleteAlbumsById(@PathVariable Long id) {
+//
+//        albumStorage.deleteAlbumById(id);
+//    }
     @DeleteMapping("/api/albums/{id}")
-    public void deleteAlbumsById(@PathVariable Long id) {
-
+    public Iterable<Album> deleteAlbumsById(@PathVariable Long id){
         albumStorage.deleteAlbumById(id);
-    }
+        return albumStorage.retrieveAllAlbums();
+        {
+
 
     @PostMapping("/api/albums")
     public Iterable<Album> addAlbum(@RequestBody Album albumToAdd) {
@@ -46,15 +52,32 @@ public class MainController {
         }
         return albumStorage.retrieveAllAlbums();
     }
+
+    @PatchMapping("/api/album/{id}/name")
+    public Album changeAlbumName(@RequestBody String newName, @PathVariable Long id) {
+        Album albumToChange = albumStorage.retrieveAlbumById(id);
+        albumToChange.changeName(newName);
+        albumStorage.saveAlbum(albumToChange);
+        return albumToChange;
+    }
+
 //    @PatchMapping("/api/albums/{albumsId}/Song")
-//    public Albums addArtistToAlbums(@RequestBody Song SongToAdd, @PathVariable Long albumsID){
-//    Album album = albumStorage.retrieveAlbumById(AlbumsId);
-//    Song song = new Song(Albums,SongToAdd.getTitle(), songToAdd.getSummary(), songToAdd.getSummary(), True);
-//    SongRepo.save(Song);
-//    return albumStorage.retrieveAlbumByID(albumsId);
-//}
+//    public String addSongToAlbums(@RequestBody String songToAdd, @PathVariable Long albumID) {
+//        Album album = albumStorage.retrieveAlbumById(albumID);
+//        //Song song = new Song(Album ,songToAdd.getTitle(), songToAdd.getTitle(), true);
+//        Song song = new Song(songToAdd, album);
+//        return songToAdd;
+//    }
 
 }
+
+//        //Add a save method to your song storage
+//        SongRepo.save(song);
+//        return albumStorage.retrieveAlbumById(albumID);
+
+
+
+
 
 
 

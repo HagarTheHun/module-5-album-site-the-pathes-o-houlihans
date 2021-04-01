@@ -1,19 +1,24 @@
 package org.wcci.apimastery.Entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 public class Comment {
     @Id
     @GeneratedValue
+    @JsonIgnore
     private Long id;
     private String name;
     @Column(columnDefinition = "TEXT")
+//    @OneToMany
     private String comment;
     private String date;
+    private String rating;
+
+
+
 
     protected Comment() {
 
@@ -38,6 +43,10 @@ public class Comment {
 
     public String getDate() {
         return date;
+    }
+
+    public String getRating() {
+        return rating;
     }
 }
 

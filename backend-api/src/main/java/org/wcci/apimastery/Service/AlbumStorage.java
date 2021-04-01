@@ -25,6 +25,8 @@ public class AlbumStorage {
 
 
     public void deleteAlbumById(Long id) { albumRepository.deleteById(id);}
+
+
 }
 
 
