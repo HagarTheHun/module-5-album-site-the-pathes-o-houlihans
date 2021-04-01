@@ -40,7 +40,13 @@ const displayAlbumView = function(album) {
     return mainElement;
 }
 
-export {displayAlbumView}
+const clearChildren = function (element) {
+    while (element.firstChild) {
+      element.removeChild(element.lastChild);
+    }
+  }
+  
+export {displayAlbumView, clearChildren}
 
 /* <main>
         <img class="linkImg" src="/src/images/Cover_contra.jpg">

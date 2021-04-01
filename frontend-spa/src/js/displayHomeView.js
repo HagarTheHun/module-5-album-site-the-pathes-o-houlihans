@@ -1,5 +1,7 @@
 //import { displayAlbumView } from "./displayAlbumView";
 
+import { displayAlbumView, clearChildren } from "./displayAlbumView.js";
+
 const displayHomeView = function (albums) {
     const mainElement = document.createElement("main");
     mainElement.classList.add("main-content");
@@ -25,15 +27,20 @@ const displayHomeView = function (albums) {
     albums.forEach(album => {
         let albumElement = document.createElement("li");
         //albumElement.innerText = album.name;
-        let albumLink = document.createElement("a");
-        albumLink.setAttribute("href", "/albums/" + album.id)
-        albumLink.innerHTML = `<img class="linkImg" src="${album.img}">`
-        albumElement.appendChild(albumLink)
+        let albumImg = document.createElement("img");
+        
+        // albumLink.setAttribute("href", "/albums/" + album.id)
+         albumImg.setAttribute("src",album.img)
+         albumImg.classList.add("linkImg")
+        
+        albumElement.appendChild(albumImg)
         ulElement.appendChild(albumElement);
-
-        // albumLink.addEventListener("click", () =>
-        //  displayAlbumView(album)
-        // );
+    
+        albumImg.addEventListener("click", () =>{
+            console.log("you clicked me"),
+            clearChildren(mainElement)
+            document.querySelector(".container").append(displayAlbumView(album))
+        });
     });
     return mainElement;
 
