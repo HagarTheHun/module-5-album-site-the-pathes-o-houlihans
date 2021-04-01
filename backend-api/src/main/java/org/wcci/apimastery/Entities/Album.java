@@ -3,18 +3,19 @@ package org.wcci.apimastery.Entities;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 @Entity
 public class Album {
     @Id
     @GeneratedValue
-    private Long Id;
+    private Long id;
     private String name;
     private String artist;
     private String img;
 
-    @OneToMany(mappedBy = "album")
-    private Collection<Song> songs;
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL,orphanRemoval = true)
+    private Collection<Song> songs= Collections.EMPTY_LIST;
 
     public void setSongs(Collection<Song> songs) {
         this.songs = songs;
@@ -33,7 +34,7 @@ public class Album {
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public String getName() {
