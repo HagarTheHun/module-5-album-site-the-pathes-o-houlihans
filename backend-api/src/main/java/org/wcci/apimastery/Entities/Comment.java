@@ -1,9 +1,6 @@
 package org.wcci.apimastery.Entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Comment {
@@ -11,7 +8,8 @@ public class Comment {
     @GeneratedValue
     private Long id;
     private String name;
-    @Column(columnDefinition = "TEXT")
+//    @Column(columnDefinition = "TEXT")
+//    @OneToMany(mappedBy = Comment)
     private String comment;
     private String date;
 
