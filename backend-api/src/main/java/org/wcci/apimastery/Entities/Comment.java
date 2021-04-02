@@ -12,9 +12,10 @@ public class Comment {
     private Long id;
     private String name;
     @Column(columnDefinition = "TEXT")
-//    @OneToMany
     private String comment;
     private String date;
+    @ManyToOne
+    private Album album;
     private String rating;
 
 
