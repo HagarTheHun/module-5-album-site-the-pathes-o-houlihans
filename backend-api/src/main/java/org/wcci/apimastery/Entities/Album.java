@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Entity
 public class Album {
@@ -13,6 +14,8 @@ public class Album {
     private String name;
     private String artist;
     private String img;
+    @OneToMany
+    private List<Comment> comments;
 
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL,orphanRemoval = true)
     private Collection<Song> songs= Collections.EMPTY_LIST;
@@ -26,6 +29,8 @@ public class Album {
         this.artist = artist;
         this.img = img;
         this.songs = new ArrayList<>();
+
+
 
 
     }
@@ -49,7 +54,15 @@ public class Album {
         return img;
     }
 
+    public List<Comment> getComment() {
+        return comments;
+    }
+
     public Collection<Song> getSongs() {
         return songs;
+
+    }
+    public void setImg(String img){
+        this.img=img;
     }
 }

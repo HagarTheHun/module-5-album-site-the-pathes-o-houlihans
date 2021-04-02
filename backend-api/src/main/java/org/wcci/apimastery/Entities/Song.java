@@ -13,6 +13,8 @@ public class Song {
     @GeneratedValue
     private long id;
     private String title;
+    @Lob
+    private String lyrics;
 //    private String releaseDate;
 //    private boolean isSingle;
 //    private int duration;
@@ -29,9 +31,14 @@ public class Song {
     }
 
 
+    public Song(String lyrics) {
+        this.lyrics = lyrics;
+    }
+
     public Song(String title, Album album) {
         this.title = title;
         this.album = album;
+
 //        this.releaseDate = releaseDate;
 //        this.isSingle = isSingle;
 //        this.duration = duration;
@@ -50,7 +57,12 @@ public class Song {
         return title;
     }
 
-//    public String getReleaseDate() {
+    public String getLyrics() {
+        return lyrics;
+    }
+
+
+    //    public String getReleaseDate() {
 //        return releaseDate;
 //    }
 //
