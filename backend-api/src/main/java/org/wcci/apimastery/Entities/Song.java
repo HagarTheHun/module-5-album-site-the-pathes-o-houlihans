@@ -31,13 +31,10 @@ public class Song {
     }
 
 
-    public Song(String lyrics) {
-        this.lyrics = lyrics;
-    }
-
-    public Song(String title, Album album) {
+    public Song(String title, Album album, String lyrics) {
         this.title = title;
         this.album = album;
+        this.lyrics= lyrics;
 
 //        this.releaseDate = releaseDate;
 //        this.isSingle = isSingle;
