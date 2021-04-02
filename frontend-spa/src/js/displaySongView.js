@@ -6,12 +6,12 @@ const displaySongView = function(album, song) {
     
     const songTitleElement = document.createElement("h3");
     songTitleElement.classList.add("songTitle");
-    songTitleElement.innerText = ${song.title}
+    songTitleElement.innerText = song.title;
     descriptionElement.appendChild(songTitleElement);
 
     const songArtistAlbumElement = document.createElement("h4");
     songArtistAlbumElement.classList.add("songArtist");
-    songArtistAlbumElement.innerText = "by " + ${album.artist} + " on " + ${album.name};
+    songArtistAlbumElement.innerText = "by " + album.artist + " on " + album.name;
     descriptionElement.appendChild(songArtistAlbumElement);
 
     const songDetailsElement = document.createElement("div");
@@ -29,7 +29,7 @@ const displaySongView = function(album, song) {
 
     const lyricsElement = document.createElement("p");
     lyricsElement.classList.add("songLyrics");
-    lyricsElement.innerText = ${song.lyrics};
+    lyricsElement.innerText = song.lyrics;
     songDetailsElement.appendChild(lyricsElement);
 
 

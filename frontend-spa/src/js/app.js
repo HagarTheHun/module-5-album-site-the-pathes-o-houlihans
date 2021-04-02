@@ -13,6 +13,9 @@ from "./sampleAllAlbums.js";
 import {
     displayAlbumView
 } from "./displayAlbumView.js"
+import {
+    displaySongView
+} from "./displaySongView.js"
 
  document.querySelector(".container").prepend(createHeader());
  document.querySelector(".container").append(displayHomeView(allAlbumJson));

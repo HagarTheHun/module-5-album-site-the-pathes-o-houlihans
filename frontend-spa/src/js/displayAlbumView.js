@@ -1,3 +1,5 @@
+ import { displaySongView, clearChildrenForSong } from "./displaySongView.js";
+
 const displayAlbumView = function(album) {
     const mainElement = document.createElement("main");
 
@@ -30,11 +32,17 @@ const displayAlbumView = function(album) {
 
     album.songs.forEach(song => {
         let songLiElement = document.createElement("li");
-        let songLinkElement = document.createElement("a");
-        songLinkElement.setAttribute("href", "/songs/" + song.id);
-        songLinkElement.innerText = song.title;
-        songLiElement.appendChild(songLinkElement);
+        // let songLinkElement = document.createElement("a");
+        // songLinkElement.setAttribute("href", "/songs/" + song.id);
+        songLiElement.innerText = song.title;
+        // songLiElement.appendChild(songLinkElement);
         songListOlElement.appendChild(songLiElement);
+
+        songLiElement.addEventListener("click", () => {
+            console.log("you clicked a song"),
+            clearChildren(mainElement)
+            document.querySelector(".container").append(displaySongView(album, song))
+        });
     });
 
     return mainElement;
