@@ -1,9 +1,6 @@
 package org.wcci.apimastery.Entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Comment {
@@ -11,18 +8,25 @@ public class Comment {
     @GeneratedValue
     private Long id;
     private String name;
-    @Column(columnDefinition = "TEXT")
-    private String comment;
-    private String date;
+    @ManyToOne
+    private Album album;
+//    @Column(columnDefinition = "TEXT")
+//    @OneToMany(mappedBy = Comment)
+
+//    private String date;
 
     protected Comment() {
 
     }
-    public Comment(String name, String comment, String date) {
+
+    public Comment(String name, Album album) {
         this.name = name;
-        this.comment = comment;
-        this.date = date;
+        this.album = album;
     }
+    //    public Comment(String name, String comment, String date) {
+//        this.name = name;
+//        this.album= album;
+// //       this.date = date;
 
     public Long getId() {
         return id;
@@ -32,12 +36,14 @@ public class Comment {
         return name;
     }
 
-    public String getComment() {
-        return comment;
+    public Album getAlbum(){
+        return album;
     }
 
-    public String getDate() {
-        return date;
-    }
 }
+
+  //  public String getDate() {
+ //       return date;
+
+
 

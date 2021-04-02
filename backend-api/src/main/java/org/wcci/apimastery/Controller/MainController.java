@@ -2,17 +2,20 @@ package org.wcci.apimastery.Controller;
 
 import org.springframework.web.bind.annotation.*;
 import org.wcci.apimastery.Entities.Album;
+import org.wcci.apimastery.Entities.Song;
 import org.wcci.apimastery.Service.AlbumStorage;
 import org.wcci.apimastery.Service.SongRepository;
 
 @RestController
 public class MainController {
     private AlbumStorage albumStorage;
+    private SongRepository songRepository;
 
 
     public MainController(AlbumStorage albumStorage) {
 
         this.albumStorage = albumStorage;
+        this.songRepository = songRepository;
     }
 
     @GetMapping("/api/albums")
@@ -26,11 +29,15 @@ public class MainController {
 
         return albumStorage.retrieveAlbumById(id);
     }
-
     @DeleteMapping("/api/albums/{id}")
-    public void deleteAlbumsById(@PathVariable Long id) {
-
+    public Iterable<Album> deleteAlbumsById(@PathVariable Long id){
         albumStorage.deleteAlbumById(id);
+        return albumStorage.retrieveAllAlbums();
+
+//    @DeleteMapping("/api/albums/{id}")
+//    public void deleteAlbumsById(@PathVariable Long id) {
+//
+//        albumStorage.deleteAlbumById(id);
     }
 
     @PostMapping("/api/albums")
@@ -46,13 +53,14 @@ public class MainController {
         }
         return albumStorage.retrieveAllAlbums();
     }
-//    @PatchMapping("/api/albums/{albumsId}/Song")
-//    public Albums addArtistToAlbums(@RequestBody Song SongToAdd, @PathVariable Long albumsID){
-//    Album album = albumStorage.retrieveAlbumById(AlbumsId);
-//    Song song = new Song(Albums,SongToAdd.getTitle(), songToAdd.getSummary(), songToAdd.getSummary(), True);
-//    SongRepo.save(Song);
-//    return albumStorage.retrieveAlbumByID(albumsId);
-//}
+//    @PatchMapping("api/albums/{albumId}/songs")
+//    public Album addSongToAlbum(@RequestBody Song songToAdd, @PathVariable Long AlbumId){
+//        Album album = albumStorage.retrieveAlbumById(albumId);
+//        Song song = new Song(album, songToAdd.getTitle();
+//        songRepository.save(song);
+//        return albumStorage.retrieveAlbumById(albumId);
+//    }
+//
 
 }
 

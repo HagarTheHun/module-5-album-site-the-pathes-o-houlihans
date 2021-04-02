@@ -1,9 +1,30 @@
-###
-GET localhost:8080/api/albums
+###  Get all Albums
+GET http://localhost:8080/api/albums
 
-###
+### Get specific Albums
 GET localhost:8080/api/albums/1
 
-###
-DELETE localhost:8080/api/albums/1
+### Delete a specific Album
+DELETE http://localhost:8080/api/albums/1
+
+### Add a new Album
+POST localhost:8080/api/albums
+Content-Type: application/json
+
+{"name": "Feel the Reggae","artist": "BoB"}
+
+### Update's an Album values
+PUT http://localhost:8080/api/albums
+Content-Type: application/json
+
+{"id": "4","name": "MadCows","artist": "Pet" }
+
+
+### update specific element of our JSON
+PATCH localhost:8080/api/albums/1/songs
+content-Type: application/json
+
+{  "title": "The Song of the year"}
+
+
 
