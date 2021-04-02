@@ -21,7 +21,7 @@ import {
 //  document.querySelector(".container").append(displayHomeView(allAlbumJson));
 fetch("http://localhost:8080/api/albums", {
     method: 'GET',
-    mode: 'no-cors'
+    //mode: 'no-cors'
 })
 .then(response => response.json())
 .then(albums => displayHomeView(albums))
