@@ -23,10 +23,13 @@ import org.wcci.apimastery.Service.SongStorage;
     @Override
     public void run(String... args) throws Exception {
         Album album1 = new Album("album1" , "Mike");
+//        album1.setImg=""
         albumStorage.saveAlbum(album1);
         Album album2 = new Album("album2", "Luke");
+//        album2
         albumStorage.saveAlbum(album2);
         Album album3 = new Album("album3", "Keshav");
+//        Album3.setImg.
         albumStorage.saveAlbum(album3);
         Album album4 = new Album("album4", "Cow");
         albumStorage.saveAlbum(album4);

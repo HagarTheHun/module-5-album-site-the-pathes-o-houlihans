@@ -3,18 +3,22 @@ package org.wcci.apimastery.Entities;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 @Entity
 public class Album {
     @Id
     @GeneratedValue
-    private Long Id;
+    private Long id;
     private String name;
     private String artist;
     private String img;
+    @OneToMany
+    private List<Comment> comments;
 
-    @OneToMany(mappedBy = "album")
-    private Collection<Song> songs;
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL,orphanRemoval = true)
+    private Collection<Song> songs= Collections.EMPTY_LIST;
 
     public void setSongs(Collection<Song> songs) {
         this.songs = songs;
@@ -27,13 +31,15 @@ public class Album {
         this.songs = new ArrayList<>();
 
 
+
+
     }
     public Album () {
 
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public String getName() {
@@ -48,7 +54,15 @@ public class Album {
         return img;
     }
 
+    public List<Comment> getComment() {
+        return comments;
+    }
+
     public Collection<Song> getSongs() {
         return songs;
+
+    }
+    public void setImg(String img){
+        this.img=img;
     }
 }
