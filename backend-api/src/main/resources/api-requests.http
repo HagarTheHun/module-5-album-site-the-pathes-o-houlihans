@@ -24,7 +24,8 @@ Content-Type: application/json
 PATCH localhost:8080/api/albums/1/songs
 content-Type: application/json
 
-{  "title": "The Song of the year"}
+{  "title": "The Song of the year",
+  "lyrics": "These are not the lyrics ;)"}
 
 
 
