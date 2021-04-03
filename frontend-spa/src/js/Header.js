@@ -18,7 +18,8 @@ const createHeader = function () {
         clearChildren(document.querySelector(".container"))
         document.querySelector(".container").prepend(createHeader());
         document.querySelector(".container").append(displayHomeView(allAlbumJson));
-        document.querySelector(".container").append(createFooter());
+        document.querySelector(".container").append(createFooter());  
+        /* a little bugged, consider not basing everything off of container, but off each thing as it is made*/
     });
     return header;
 }

@@ -20,6 +20,6 @@ import {
  document.querySelector(".container").prepend(createHeader());
  document.querySelector(".container").append(displayHomeView(allAlbumJson));
  document.querySelector(".container").append(createFooter());
+// Noticed the footer floats up as we clear children
 
- 
 //console.log(allAlbumJson)
