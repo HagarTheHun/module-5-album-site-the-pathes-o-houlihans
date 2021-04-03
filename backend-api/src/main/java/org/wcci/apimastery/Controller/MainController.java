@@ -12,7 +12,7 @@ public class MainController {
     private SongRepository songRepository;
 
 
-    public MainController(AlbumStorage albumStorage) {
+    public MainController(AlbumStorage albumStorage, SongRepository songRepository) {
 
         this.albumStorage = albumStorage;
         this.songRepository = songRepository;
@@ -53,14 +53,23 @@ public class MainController {
         }
         return albumStorage.retrieveAllAlbums();
     }
-//    @PatchMapping("api/albums/{albumId}/songs")
-//    public Album addSongToAlbum(@RequestBody Song songToAdd, @PathVariable Long AlbumId){
+    @PatchMapping("api/albums/{albumId}/songs")
+    public Album addSongToAlbum(@RequestBody Song songToAdd, @PathVariable Long albumId){
+        Album album = albumStorage.retrieveAlbumById(albumId);
+        Song song = new Song(songToAdd.getTitle() ,album, songToAdd.getLyrics());
+        songRepository.save(song);
+        return albumStorage.retrieveAlbumById(albumId);
+    }
+//    @PatchMapping("/api/albums/{albumId}/songs")
+//    public Album addSongToAlbum(@RequestBody Song songToAdd, @PathVariable Long albumId) {
 //        Album album = albumStorage.retrieveAlbumById(albumId);
-//        Song song = new Song(album, songToAdd.getTitle();
+//        Song song = new Song( songToAdd.getTitle(), album, songToAdd.getLyrics());
 //        songRepository.save(song);
+//        album.addSong(song);
+//        albumStorage.saveAlbum(album);
 //        return albumStorage.retrieveAlbumById(albumId);
 //    }
-//
+
 
 }
 
