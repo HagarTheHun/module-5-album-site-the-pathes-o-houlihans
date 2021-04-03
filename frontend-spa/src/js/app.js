@@ -20,4 +20,6 @@ import {
  document.querySelector(".container").prepend(createHeader());
  document.querySelector(".container").append(displayHomeView(allAlbumJson));
  document.querySelector(".container").append(createFooter());
+
+ 
 //console.log(allAlbumJson)
