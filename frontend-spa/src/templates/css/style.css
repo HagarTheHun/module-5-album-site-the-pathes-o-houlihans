@@ -78,10 +78,13 @@ li {
     flex-wrap: wrap;
     justify-content: center;
     width: 400px;
-    
-   
-    
 }
+.button {
+    display: flex;
+    background-color: cadetblue;
+    width: 3.5em;
+}
+
 /* a:hover {
     text-decoration: underline; 
 }*/

@@ -1,5 +1,12 @@
+import { displayAlbumView, clearChildren } from "./displayAlbumView.js";
+
 const displaySongView = function(album, song) {
     const mainElement = document.createElement("main");
+    
+    const backButtonElement = document.createElement("button");
+    backButtonElement.classList.add("button");
+    backButtonElement.innerText = "Back";
+    mainElement.appendChild(backButtonElement);    
     
     const descriptionElement = document.createElement("div"); /*this part might need changed*/
     mainElement.appendChild(descriptionElement);
@@ -32,7 +39,11 @@ const displaySongView = function(album, song) {
     lyricsElement.innerText = song.lyrics;
     songDetailsElement.appendChild(lyricsElement);
 
-
+    backButtonElement.addEventListener("click", () =>{
+        console.log("you pressed back, going to album")
+        clearChildren(mainElement)
+        document.querySelector(".container").append(displayAlbumView(album))
+    });
 
     return mainElement;
 } 
@@ -48,6 +59,7 @@ export {displaySongView, clearChildrenForSong}
 
 
 /* <main>
+    <button class="button">Back</button>
     <div>
         <h3 class="songTitle">Horchata</h3>
         <h4 class="songArtist">by<span class="artist"> Vampire Weekend </span> on <span class="songAlbum"><a href="album.html">Contra</a></span></h4>
