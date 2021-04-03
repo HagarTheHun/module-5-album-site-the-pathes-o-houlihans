@@ -21,7 +21,7 @@ Content-Type: application/json
 
 
 ### update specific element of our JSON
-PATCH localhost:8080/api/albums/1/songs
+PATCH localhost:8080/api/albums/1/song
 content-Type: application/json
 
 {  "title": "The Song of the year"}

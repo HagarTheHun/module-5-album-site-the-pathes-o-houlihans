@@ -61,6 +61,15 @@ public class MainController {
 //        return albumStorage.retrieveAlbumById(albumId);
 //    }
 //
+@PatchMapping("/api/albums/{albumId}/song")
+public Album addSongToAlbum(@RequestBody Song songToAdd, @PathVariable Long albumId) {
+    Album album = albumStorage.retrieveAlbumById(albumId);
+    Song song = new Song(album,songToAdd.getTitle(),songToAdd.getLyrics());
+    songRepository.save(song);
+    album.addSong(song);
+    albumStorage.saveAlbum(album);
+    return albumStorage.retrieveAlbumById(albumId);
+}
 
 }
 
