@@ -27,5 +27,5 @@ fetch("http://localhost:8080/api/albums", {
 .then(albums => displayHomeView(albums))
 .then(mainElement => document.querySelector(".container").append(mainElement))
 .catch(ERROR => console.log(ERROR)); 
- document.querySelector(".container").append(createFooter());
+ document.querySelector(".foot").append(createFooter());
 //console.log(allAlbumJson)
