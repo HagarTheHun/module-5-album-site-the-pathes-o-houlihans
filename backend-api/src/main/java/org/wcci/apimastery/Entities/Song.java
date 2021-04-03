@@ -22,13 +22,7 @@ public class Song {
     @JsonIgnore
     private Album album;
 
-    public Album getAlbum() {
-        return album;
-    }
 
-    public void setAlbum(Album album) {
-        this.album = album;
-    }
 
 
     public Song(String title, Album album, String lyrics) {
@@ -44,7 +38,13 @@ public class Song {
     public Song () {
 
     }
+    public Album getAlbum() {
+        return album;
+    }
 
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
 
     public long getId() {
         return id;
