@@ -1,34 +1,50 @@
  import { displaySongView, clearChildrenForSong } from "./displaySongView.js";
+ import { displayHomeView } from "./displayHomeView.js";
+ import { allAlbumJson } from "./sampleAllAlbums.js";
 
 const displayAlbumView = function(album) {
     const mainElement = document.createElement("main");
 
+    const backButtonElement = document.createElement("button");
+    backButtonElement.classList.add("button");
+    backButtonElement.innerText = "Back to Home";
+    mainElement.appendChild(backButtonElement);
+
+    const albumDataElement = document.createElement("div");
+    mainElement.appendChild(albumDataElement);
+
     const albumImgElement = document.createElement("img");
     albumImgElement.classList.add("linkImg")
     albumImgElement.setAttribute("src", "" + album.img);
-    mainElement.appendChild(albumImgElement);
+    albumDataElement.appendChild(albumImgElement);
 
     const albumTitleElement = document.createElement("h3");
     albumTitleElement.classList.add("albumTitle");
     albumTitleElement.innerText = album.name;
-    mainElement.appendChild(albumTitleElement);
+    albumDataElement.appendChild(albumTitleElement);
 
     const albumArtistElement = document.createElement("h4");
     albumArtistElement.classList.add("albumArtist");
     albumArtistElement.innerText = "by " + album.artist;
-    mainElement.appendChild(albumArtistElement);
+    albumDataElement.appendChild(albumArtistElement);
 
     const descriptionElement = document.createElement("p");
     descriptionElement.classList.add("description");
     descriptionElement.innerText = "This is a discription of the album that should probably be a value in the pojo."
-    mainElement.appendChild(descriptionElement);
+    albumDataElement.appendChild(descriptionElement);
 
     const songListDivElement = document.createElement("div");
     songListDivElement.classList.add("songList");
-    mainElement.appendChild(songListDivElement);
+    albumDataElement.appendChild(songListDivElement);
 
     const songListOlElement = document.createElement("ol");
     songListDivElement.appendChild(songListOlElement);
+
+    backButtonElement.addEventListener("click", () =>{
+        console.log("you pressed back, going to home")
+        clearChildren(mainElement)
+        document.querySelector(".container").append(displayHomeView(allAlbumJson))
+    });
 
     album.songs.forEach(song => {
         let songLiElement = document.createElement("li");
@@ -57,6 +73,7 @@ const clearChildren = function (element) {
 export {displayAlbumView, clearChildren}
 
 /* <main>
+        <button class="button">Back</button>
         <img class="linkImg" src="/src/images/Cover_contra.jpg">
         <h3 class="albumTitle">Contra</h3>
         <h4 class="albumArtist">by <span class="artist">Vampire Weekend</span></h4>

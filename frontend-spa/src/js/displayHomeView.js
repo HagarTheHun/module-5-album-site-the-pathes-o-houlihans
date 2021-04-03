@@ -12,8 +12,10 @@ const displayHomeView = function (albums) {
 
     const pElement = document.createElement("p");
     pElement.classList.add("description");
+    pElement.innerText = "This site is to review albums and songs from many artisits."
     descriptionElement.appendChild(pElement);
-    pElement.innerHTML = '<p class="description">This site is to review albums and songs from many artisits.</p>';
+    //pElement.innerHTML = '<p class="description">This site is to review albums and songs from many artisits.</p>';
+    
 
 
     const sectionElement = document.createElement("div");

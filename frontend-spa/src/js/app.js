@@ -7,8 +7,7 @@ import {
 import {
     displayHomeView
 } from "./displayHomeView.js"
-import { allAlbumJson } 
-from "./sampleAllAlbums.js";
+import { allAlbumJson } from "./sampleAllAlbums.js";
 
 import {
     displayAlbumView

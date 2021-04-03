@@ -5,7 +5,7 @@ const displaySongView = function(album, song) {
     
     const backButtonElement = document.createElement("button");
     backButtonElement.classList.add("button");
-    backButtonElement.innerText = "Back";
+    backButtonElement.innerText = "Back to the album";
     mainElement.appendChild(backButtonElement);    
     
     const descriptionElement = document.createElement("div"); /*this part might need changed*/
