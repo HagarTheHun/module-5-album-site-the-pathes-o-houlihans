@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 5 Project</title>
+    <link rel="stylesheet" href="css/protoStyle.css">
+    <link rel="stylesheet" href="css/layout.css">
+
+
+</head>
+
+<body>
+    <header id="home">
+        <h1><a href="home.html">Sitename</a></h1>
+    </header>
+    <div class="pageButtons">
+        <button class="button">Stop Edit</button>
+    </div>
+    <form>
+        <div class="descriptionDiv">
+            <div class="titleDiv">
+                <h3 class="songTitle">Horchata</h3>
+                <input type="text" placeholder="New song title" name="songTitle">
+            </div>
+            <div class="artistAlbumDiv">
+                <h4 class="songArtist">by<span class="artist"> Vampire Weekend </span> on <span class="songAlbum"><a href="album.html">Contra</a></span></h4>
+                <p>Note, these are atributes of the album</p>
+            </div>
+        </div>
+
+        <div class="songDetails">
+            <div class="songLengthDiv">
+                <p class="songDurationLine">This song is <span id="songDuration">4m30s</span> long. </p>
+                <!-- pattern="[0-9]+m[0-9]+s" -->
+                <input type="text" placeholder="#m##s" name="songDuration">
+            </div>
+            <div>
+                <p class="lyricsIntro">The lyrics acording to google are:</p>
+                <pre><span class="songLyrics">lyrics lyrics lyrics 
+lyrics lyrics lyrics lyrics 
+lyrics lyrics lyrics lyrics v lyric 
+lyrics lyrics lyrics lyrics 
+lyrics lyrics lyrics 
+lyrics 
+lyrics lyrics 
+lyrics lyrics lyrics </span></pre>
+                <textarea name="songLyrics"></textarea>
+            </div>
+        </div>
+        <input type="hidden" value="THE ID">
+        <button type="submit" class="button">Submit changes</button>
+    </form>
+
+    <footer>Site by the unfortnate typo, the-pathes-o-houlihans.</footer>
+
+
+
+</body>
+
+</html>

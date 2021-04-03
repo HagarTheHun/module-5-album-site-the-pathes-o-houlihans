@@ -5,40 +5,44 @@
 const displayAlbumView = function(album) {
     const mainElement = document.createElement("main");
 
-    const backButtonElement = document.createElement("button");
-    backButtonElement.classList.add("button");
-    backButtonElement.innerText = "Back to Home";
-    mainElement.appendChild(backButtonElement);
+    const pageButtonsElement = document.createElement("div");
+    pageButtonsElement.classList.add("pageButtons");
+    mainElement.appendChild(pageButtonsElement);
+    
+        const backButtonElement = document.createElement("button");
+        backButtonElement.classList.add("button");
+        backButtonElement.innerText = "Back to Home";
+        pageButtonsElement.appendChild(backButtonElement);
 
     const albumDataElement = document.createElement("div");
     mainElement.appendChild(albumDataElement);
 
-    const albumImgElement = document.createElement("img");
-    albumImgElement.classList.add("linkImg")
-    albumImgElement.setAttribute("src", "" + album.img);
-    albumDataElement.appendChild(albumImgElement);
+        const albumImgElement = document.createElement("img");
+        albumImgElement.classList.add("linkImg")
+        albumImgElement.setAttribute("src", "" + album.img);
+        albumDataElement.appendChild(albumImgElement);
 
-    const albumTitleElement = document.createElement("h3");
-    albumTitleElement.classList.add("albumTitle");
-    albumTitleElement.innerText = album.name;
-    albumDataElement.appendChild(albumTitleElement);
+        const albumTitleElement = document.createElement("h3");
+        albumTitleElement.classList.add("albumTitle");
+        albumTitleElement.innerText = album.name;
+        albumDataElement.appendChild(albumTitleElement);
 
-    const albumArtistElement = document.createElement("h4");
-    albumArtistElement.classList.add("albumArtist");
-    albumArtistElement.innerText = "by " + album.artist;
-    albumDataElement.appendChild(albumArtistElement);
+        const albumArtistElement = document.createElement("h4");
+        albumArtistElement.classList.add("albumArtist");
+        albumArtistElement.innerText = "by " + album.artist;
+        albumDataElement.appendChild(albumArtistElement);
 
-    const descriptionElement = document.createElement("p");
-    descriptionElement.classList.add("description");
-    descriptionElement.innerText = "This is a discription of the album that should probably be a value in the pojo."
-    albumDataElement.appendChild(descriptionElement);
+        const descriptionElement = document.createElement("p");
+        descriptionElement.classList.add("description");
+        descriptionElement.innerText = "This is a discription of the album that should probably be a value in the pojo."
+        albumDataElement.appendChild(descriptionElement);
 
-    const songListDivElement = document.createElement("div");
-    songListDivElement.classList.add("songList");
-    albumDataElement.appendChild(songListDivElement);
+        const songListDivElement = document.createElement("div");
+        songListDivElement.classList.add("songList");
+        albumDataElement.appendChild(songListDivElement);
 
-    const songListOlElement = document.createElement("ol");
-    songListDivElement.appendChild(songListOlElement);
+            const songListOlElement = document.createElement("ol");
+            songListDivElement.appendChild(songListOlElement);
 
     backButtonElement.addEventListener("click", () =>{
         console.log("you pressed back, going to home")

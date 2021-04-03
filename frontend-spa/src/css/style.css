@@ -78,9 +78,15 @@ li {
     flex-wrap: wrap;
     justify-content: center;
     width: 400px;
-    
-   
-    
+}
+.button {
+    display: flex;
+    background-color: cadetblue;
+    width: auto;
+}
+.pageButtons {
+    display: flex;
+    justify-content: space-between;
 }
 /* a:hover {
     text-decoration: underline; 

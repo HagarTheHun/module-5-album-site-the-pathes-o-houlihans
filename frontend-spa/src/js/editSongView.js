@@ -1,16 +1,16 @@
 import { displayAlbumView, clearChildren } from "./displayAlbumView.js";
 
-const displaySongView = function(album, song) {
+const editSongView = function(album, song) {
     const mainElement = document.createElement("main");
     
     const pageButtonsElement = document.createElement("div");
     pageButtonsElement.classList.add("pageButtons");
     mainElement.appendChild(pageButtonsElement);
     
-        const backButtonElement = document.createElement("button");
-        backButtonElement.classList.add("button");
-        backButtonElement.innerText = "Back to the album";
-        pageButtonsElement.appendChild(backButtonElement);
+        // const backButtonElement = document.createElement("button");
+        // backButtonElement.classList.add("button");
+        // backButtonElement.innerText = "Back to the album";
+        // pageButtonsElement.appendChild(backButtonElement);
 
         const editButtonElement = document.createElement("button");
         editButtonElement.classList.add("button");
@@ -19,7 +19,6 @@ const displaySongView = function(album, song) {
 
     
     const descriptionElement = document.createElement("div"); /*this part might need changed*/
-    descriptionElement.classList.add("descriptionDiv");
     mainElement.appendChild(descriptionElement);
     
         const songTitleElement = document.createElement("h3");
@@ -51,26 +50,22 @@ const displaySongView = function(album, song) {
         lyricsElement.innerText = song.lyrics;
         songDetailsElement.appendChild(lyricsElement);
 
-    backButtonElement.addEventListener("click", () =>{
-        console.log("you pressed back, going to album")
-        clearChildren(mainElement)
-        document.querySelector(".container").append(displayAlbumView(album))
-    });
-    editButtonElement.addEventListener("click", () =>{
-        console.log("you presed Edit Page, putting down the edit boxes")
-
-    });
+    // backButtonElement.addEventListener("click", () =>{
+    //     console.log("you pressed back, going to album")
+    //     clearChildren(mainElement)
+    //     document.querySelector(".container").append(displayAlbumView(album))
+    // });
+    // editButtonElement.addEventListener("click", () =>{
+    //     console.log("you presed Edit Page, putting down the edit boxes")
+        
+    // });
 
     return mainElement;
 } 
 
-const clearChildrenForSong = function (element) {
-    while (element.firstChild) {
-      element.removeChild(element.lastChild);
-    }
-}
 
-export {displaySongView, clearChildrenForSong}
+
+export {editSongView}
 
 
 

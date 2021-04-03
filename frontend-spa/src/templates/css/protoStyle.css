@@ -55,10 +55,9 @@ li {
     justify-content: center;
 } */
 .songDetails {
-    border: 25px solid black;
+    border: 5px solid black;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     
 }
@@ -74,7 +73,7 @@ li {
 .songLyrics {
     border: 5px solid blue;
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     flex-wrap: wrap;
     justify-content: center;
     width: 400px;
@@ -82,7 +81,31 @@ li {
 .button {
     display: flex;
     background-color: cadetblue;
-    width: 3.5em;
+    width: auto;
+}
+.pageButtons {
+    display: flex;
+    justify-content: space-between;
+}
+input {
+    align-self: center;
+    height: 1em;
+    
+}
+.titleDiv {
+    display: flex;
+    justify-content: center;
+}
+.artistAlbumDiv {
+    display: flex;
+    justify-content: center;
+}
+.artistAlbumDiv p {
+    align-self: center;
+}
+.songLengthDiv {
+    
+    
 }
 
 /* a:hover {
