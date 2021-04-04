@@ -45,6 +45,41 @@ const displaySongView = function(album, song) {
         document.querySelector(".container").append(displayAlbumView(album))
     });
 
+    const form = document.createElement("form");
+    form.classList.add("new-song-form");
+    const songRatingInput = document.createElement("input");
+    songRatingInput.classList.add("new-song-rating");
+    songRatingInput.setAttribute("type", "number");
+    songRatingInput.setAttribute("placeholder", "RATING");
+
+    const songReviewInput = document.createElement("input");
+    songReviewInput.classList.add("new-song-revew");
+    songReviewInput.setAttribute("type", "text");
+    songReviewInput.setAttribute("placeholder", "REVIEW");
+
+    const submitReviewButton = document.createElement("button");
+    submitReviewButton.classList.add("song-review-button");
+    submitReviewButton.innerText= "Submit";
+
+    submitReviewButton.addEventListener("click", (clickEvent) =>{
+        clickEvent.preventDefault();
+        const songReviewJson = {
+            "rating": songRatingInput.value,
+            "review": songReviewInput.value,
+        }
+        fetch("http://localhost:8080/api/songs",{
+            method: 'POST',
+            headers:{
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(songReviewJson)
+        })
+        .then(response=>response.json())
+        .then(songs => displaySongView(songs))
+        .then(songsElement => mainElement.appendChild(songsElement))
+        .catch(error => console.log(error));
+    })
+
     return mainElement;
 } 
 
