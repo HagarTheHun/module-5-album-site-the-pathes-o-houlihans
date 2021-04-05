@@ -1,6 +1,7 @@
- import { displaySongView, clearChildrenForSong } from "./displaySongView.js";
+ import { displaySongView } from "./displaySongView.js";
  import { displayHomeView } from "./displayHomeView.js";
  import { allAlbumJson } from "./sampleAllAlbums.js";
+ import { editAlbumView } from "./editAlbumView.js";
 
 const displayAlbumView = function(album) {
     const mainElement = document.createElement("main");
@@ -13,6 +14,11 @@ const displayAlbumView = function(album) {
         backButtonElement.classList.add("button");
         backButtonElement.innerText = "Back to Home";
         pageButtonsElement.appendChild(backButtonElement);
+
+        const editButtonElement = document.createElement("button");
+        editButtonElement.classList.add("button");
+        editButtonElement.innerText = "Edit";
+        pageButtonsElement.appendChild(editButtonElement);
 
     const albumDataElement = document.createElement("div");
     mainElement.appendChild(albumDataElement);
@@ -50,6 +56,12 @@ const displayAlbumView = function(album) {
         document.querySelector(".container").append(displayHomeView(allAlbumJson))
     });
 
+    editButtonElement.addEventListener("click", () =>{
+        console.log("you presed Edit Page, putting down the edit boxes")
+        clearChildren(mainElement)
+        document.querySelector(".container").append(editAlbumView)
+    })
+
     album.songs.forEach(song => {
         let songLiElement = document.createElement("li");
         // let songLinkElement = document.createElement("a");
@@ -61,7 +73,7 @@ const displayAlbumView = function(album) {
         songLiElement.addEventListener("click", () => {
             console.log("you clicked a song"),
             clearChildren(mainElement)
-            document.querySelector(".container").append(displaySongView(album, song))
+            document.querySelector(".container").append(editAlbumView(album))
         });
     });
 
