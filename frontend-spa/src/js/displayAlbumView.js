@@ -59,7 +59,7 @@ const displayAlbumView = function(album) {
     editButtonElement.addEventListener("click", () =>{
         console.log("you presed Edit Page, putting down the edit boxes")
         clearChildren(mainElement)
-        document.querySelector(".container").append(editAlbumView)
+        document.querySelector(".container").append(editAlbumView(album))
     })
 
     album.songs.forEach(song => {
@@ -73,7 +73,7 @@ const displayAlbumView = function(album) {
         songLiElement.addEventListener("click", () => {
             console.log("you clicked a song"),
             clearChildren(mainElement)
-            document.querySelector(".container").append(editAlbumView(album))
+            document.querySelector(".container").append(displaySongView(album, song))
         });
     });
 

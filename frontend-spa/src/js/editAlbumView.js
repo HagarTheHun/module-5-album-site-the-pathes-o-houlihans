@@ -1,74 +1,144 @@
 // import { displaySongView, clearChildrenForSong } from "./displaySongView.js";
 // import { displayHomeView } from "./displayHomeView.js";
 // import { allAlbumJson } from "./sampleAllAlbums.js";
+import {displayAlbumView, clearChildren} from "./displayAlbumView.js";
+
+
 
 const editAlbumView = function(album) {
-   const mainElement = document.createElement("main");
+    const mainElement = document.createElement("main");
 
-   const pageButtonsElement = document.createElement("div");
-   pageButtonsElement.classList.add("pageButtons");
-   mainElement.appendChild(pageButtonsElement);
-   
-    //    const backButtonElement = document.createElement("button");
-    //    backButtonElement.classList.add("button");
-    //    backButtonElement.innerText = "Back to Home";
-    //    pageButtonsElement.appendChild(backButtonElement);
+    const pageButtonsElement = document.createElement("div");
+    pageButtonsElement.classList.add("pageButtons");
+    mainElement.appendChild(pageButtonsElement);
 
         const editButtonElement = document.createElement("button");
         editButtonElement.classList.add("button");
         editButtonElement.innerText = "Stop Edit";
         pageButtonsElement.appendChild(editButtonElement);
 
-   const albumDataElement = document.createElement("div");
-   mainElement.appendChild(albumDataElement);
+    const formElement = document.createElement("form"); 
+    mainElement.appendChild(formElement);
 
-       const albumImgElement = document.createElement("img");
-       albumImgElement.classList.add("linkImg")
-       albumImgElement.setAttribute("src", "" + album.img);
-       albumDataElement.appendChild(albumImgElement);
+        const albumDataElement = document.createElement("div");
+        formElement.appendChild(albumDataElement);
 
-       const albumTitleElement = document.createElement("h3");
-       albumTitleElement.classList.add("albumTitle");
-       albumTitleElement.innerText = album.name;
-       albumDataElement.appendChild(albumTitleElement);
+            const albumCoverDivElement = document.createElement("div");
+            albumCoverDivElement.classList.add("albumCoverDiv");
+            albumDataElement.appendChild(albumCoverDivElement);
 
-       const albumArtistElement = document.createElement("h4");
-       albumArtistElement.classList.add("albumArtist");
-       albumArtistElement.innerText = "by " + album.artist;
-       albumDataElement.appendChild(albumArtistElement);
+                const albumImgElement = document.createElement("img");
+                albumImgElement.classList.add("linkImg")
+                albumImgElement.setAttribute("src", "" + album.img);
+                albumCoverDivElement.appendChild(albumImgElement);
 
-       const descriptionElement = document.createElement("p");
-       descriptionElement.classList.add("description");
-       descriptionElement.innerText = "This is a discription of the album that should probably be a value in the pojo."
-       albumDataElement.appendChild(descriptionElement);
+                const albumCoverInput = document.createElement("input");
+                albumCoverInput.setAttribute("type", "text");
+                albumCoverInput.setAttribute("placeholder", "Put an image url here");
+                albumCoverInput.setAttribute("name", "albumCover");
+                albumCoverDivElement.appendChild(albumCoverInput);
 
-       const songListDivElement = document.createElement("div");
-       songListDivElement.classList.add("songList");
-       albumDataElement.appendChild(songListDivElement);
+            const albumTitleDivElement = document.createElement("div");
+            albumTitleDivElement.classList.add("albumTitleDiv");
+            albumDataElement.appendChild(albumTitleDivElement);
 
-           const songListOlElement = document.createElement("ol");
-           songListDivElement.appendChild(songListOlElement);
+                const albumTitleElement = document.createElement("h3");
+                albumTitleElement.classList.add("albumTitle");
+                albumTitleElement.innerText = album.name;
+                albumTitleDivElement.appendChild(albumTitleElement);
+
+                const albumTitleInput = document.createElement("input");
+                albumTitleInput.setAttribute("type", "text");
+                albumTitleInput.setAttribute("placeholder", "New Album Title");
+                albumTitleInput.setAttribute("name", "name");
+                albumTitleDivElement.appendChild(albumTitleInput);
+
+            const albumArtistDivElement = document.createElement("div");
+            albumArtistDivElement.classList.add("albumArtistDiv");
+            albumDataElement.appendChild(albumArtistDivElement);
+
+                const albumArtistElement = document.createElement("h4");
+                albumArtistElement.classList.add("albumArtist");
+                albumArtistElement.innerText = "by " + album.artist;
+                albumArtistDivElement.appendChild(albumArtistElement);
+
+                const albumArtistInput = document.createElement("input");
+                albumArtistInput.setAttribute("type", "text");
+                albumArtistInput.setAttribute("placeholder", "New Artist");
+                albumArtistInput.setAttribute("name", "artist");
+                albumArtistDivElement.appendChild(albumArtistInput);
+
+            const descriptionDivElement = document.createElement("div");
+            descriptionDivElement.classList.add("descriptionDiv");
+            albumDataElement.appendChild(descriptionDivElement);
+
+                const descriptionElement = document.createElement("p");
+                descriptionElement.classList.add("description");
+                descriptionElement.innerText = "This is a discription of the album that should probably be a value in the pojo."
+                descriptionDivElement.appendChild(descriptionElement);
+
+                const descriptionTextarea = document.createElement("textarea");
+                descriptionTextarea.setAttribute("placeholder", "New description here");
+                descriptionTextarea.setAttribute("name", "discription");
+                descriptionDivElement.appendChild(descriptionTextarea);
+
+        const submitButton = document.createElement("button");
+        submitButton.setAttribute("type", "button"); //can't actually be submit because it will reload the page
+        submitButton.setAttribute("class", "button");
+        submitButton.innerText = "Submit changes";
+        albumDataElement.appendChild(submitButton);
+
+            const songListDivElement = document.createElement("div");
+            songListDivElement.classList.add("songList");
+            albumDataElement.appendChild(songListDivElement);
+
+                const removalWarningElement = document.createElement("p");
+                removalWarningElement.innerText = "If you hit the remove button it will destroy the song above it and it's reviews";
+                songListDivElement.appendChild(removalWarningElement);
+
+                const songListOlElement = document.createElement("ol");
+                songListDivElement.appendChild(songListOlElement);
 
 //    backButtonElement.addEventListener("click", () =>{
 //        console.log("you pressed back, going to home")
 //        clearChildren(mainElement)
 //        document.querySelector(".container").append(displayHomeView(allAlbumJson))
 //    });
+    editButtonElement.addEventListener("click", () =>{
+        console.log("you presed Stop Edit Page, hopefully you hit the submit button if you wanted to save your changes")
+        clearChildren(mainElement)
+        document.querySelector(".container").append(displayAlbumView(album))
+    });
 
-   album.songs.forEach(song => {
-       let songLiElement = document.createElement("li");
-       // let songLinkElement = document.createElement("a");
-       // songLinkElement.setAttribute("href", "/songs/" + song.id);
-       songLiElement.innerText = song.title;
-       // songLiElement.appendChild(songLinkElement);
-       songListOlElement.appendChild(songLiElement);
+    submitButton.addEventListener("click", ()=>{
+        console.log("this is the submit button")
+        //then send the info where it goes to update
+    });
+                
 
-       songLiElement.addEventListener("click", () => {
-           console.log("you clicked a song"),
-           clearChildren(mainElement)
-           document.querySelector(".container").append(displaySongView(album, song))
-       });
-   });
+            album.songs.forEach(song => {
+                let songLiElement = document.createElement("li");
+                songLiElement.innerText = song.title;
+                songListOlElement.appendChild(songLiElement);
+
+                let removeSongButtonElement = document.createElement("button");
+                removeSongButtonElement.classList.add("button");
+                removeSongButtonElement.setAttribute("type", "button");
+                removeSongButtonElement.innerText  = "Remove";
+                songLiElement.appendChild(removeSongButtonElement);
+
+                removeSongButtonElement.addEventListener("click", () =>{
+                    console.log("BOOM, destoryed " + song.title);
+                    //then send the delete message to the backend
+                });
+
+                // songLiElement.addEventListener("click", () => {
+                //     console.log("you clicked a song"),
+                //     clearChildren(mainElement)
+                //     document.querySelector(".container").append(displaySongView(album, song))
+                // });
+            });
+            
 
    return mainElement;
 }

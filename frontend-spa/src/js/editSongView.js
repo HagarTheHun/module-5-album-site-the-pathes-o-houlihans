@@ -96,7 +96,7 @@ const editSongView = function(album, song) {
         formElement.appendChild(hiddenIdInput);
 
         const submitButton = document.createElement("button");
-        submitButton.setAttribute("type", "button"); //can actually be submit because it will reload the page
+        submitButton.setAttribute("type", "button"); //can't actually be submit because it will reload the page
         submitButton.setAttribute("class", "button");
         submitButton.innerText = "Submit changes";
         formElement.appendChild(submitButton);
