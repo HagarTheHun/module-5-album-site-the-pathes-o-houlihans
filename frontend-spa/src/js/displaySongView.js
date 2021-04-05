@@ -1,4 +1,5 @@
 import { displayAlbumView, clearChildren } from "./displayAlbumView.js";
+import { editSongView } from "./editSongView.js";
 
 const displaySongView = function(album, song) {
     const mainElement = document.createElement("main");
@@ -58,7 +59,8 @@ const displaySongView = function(album, song) {
     });
     editButtonElement.addEventListener("click", () =>{
         console.log("you presed Edit Page, putting down the edit boxes")
-
+        clearChildren(mainElement)
+        document.querySelector(".container").append(editSongView(album,song))
     });
 
     return mainElement;
