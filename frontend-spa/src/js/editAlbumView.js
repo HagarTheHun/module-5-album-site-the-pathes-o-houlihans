@@ -5,7 +5,7 @@ import {displayAlbumView, clearChildren} from "./displayAlbumView.js";
 
 
 
-const editAlbumView = function(album) {
+const editAlbumView = function(album, albums) {
     const mainElement = document.createElement("main");
 
     const pageButtonsElement = document.createElement("div");
@@ -111,7 +111,7 @@ const editAlbumView = function(album) {
     editButtonElement.addEventListener("click", () =>{
         console.log("you presed Stop Edit Page, hopefully you hit the submit button if you wanted to save your changes")
         clearChildren(mainElement)
-        document.querySelector(".container").append(displayAlbumView(album))
+        document.querySelector(".container").append(displayAlbumView(album, albums))
     });
 
             album.songs.forEach(song => {
@@ -137,7 +137,7 @@ const editAlbumView = function(album) {
                 // });
             });
 
-            submitButton.addEventListener("click", ()=>{
+        submitButton.addEventListener("click", ()=>{
         
 
         let data = {
@@ -148,16 +148,18 @@ const editAlbumView = function(album) {
             songs: album.songs
         }
         console.log("this is the submit button ", data);
+        let newAlbums;
         fetch("http://localhost:8080/api/albums",{
             method: 'PUT',
             headers:{'content-type':'application/json'},
             body: JSON.stringify(data)
         })
         .then(response => response.json()) 
-        .then(albums => albums.find(a => a.id === album.id))
+        .then(fetchAlbums =>  newAlbums = fetchAlbums)
+        .then(newAlbums => newAlbums.find(a => a.id === album.id))
         .then(thisAlbum => {
             clearChildren(mainElement)
-            document.querySelector(".container").append(displayAlbumView(thisAlbum))
+            document.querySelector(".container").append(displayAlbumView(thisAlbum, newAlbums))
         })
         .catch(ERROR => console.log(ERROR));
         //then send the info where it goes to update

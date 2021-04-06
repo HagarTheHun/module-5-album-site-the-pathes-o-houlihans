@@ -1,7 +1,7 @@
 import { displayAlbumView, clearChildren } from "./displayAlbumView.js";
 import { editSongView } from "./editSongView.js";
 
-const displaySongView = function(album, song) {
+const displaySongView = function(album, song, albums) {
     const mainElement = document.createElement("main");
     
     const pageButtonsElement = document.createElement("div");
@@ -55,12 +55,12 @@ const displaySongView = function(album, song) {
     backButtonElement.addEventListener("click", () =>{
         console.log("you pressed back, going to album")
         clearChildren(mainElement)
-        document.querySelector(".container").append(displayAlbumView(album))
+        document.querySelector(".container").append(displayAlbumView(album, albums))
     });
     editButtonElement.addEventListener("click", () =>{
         console.log("you presed Edit Page, putting down the edit boxes")
         clearChildren(mainElement)
-        document.querySelector(".container").append(editSongView(album,song))
+        document.querySelector(".container").append(editSongView(album,song, albums))
     });
 
     return mainElement;

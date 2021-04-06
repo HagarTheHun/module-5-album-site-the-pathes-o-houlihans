@@ -41,7 +41,7 @@ const displayHomeView = function (albums) {
         albumImg.addEventListener("click", () =>{
             console.log("you clicked me"),
             clearChildren(mainElement)
-            document.querySelector(".container").append(displayAlbumView(album))
+            document.querySelector(".container").append(displayAlbumView(album, albums))
         });
     });
     return mainElement;

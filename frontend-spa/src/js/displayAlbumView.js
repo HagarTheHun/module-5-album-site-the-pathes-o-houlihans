@@ -1,9 +1,9 @@
  import { displaySongView } from "./displaySongView.js";
  import { displayHomeView } from "./displayHomeView.js";
- import { allAlbumJson } from "./sampleAllAlbums.js";
+//  import { allAlbumJson } from "./sampleAllAlbums.js";
  import { editAlbumView } from "./editAlbumView.js";
 
-const displayAlbumView = function(album) {
+const displayAlbumView = function(album, albums) {
     console.log("displaying", album);
     
     const mainElement = document.createElement("main");
@@ -55,13 +55,13 @@ const displayAlbumView = function(album) {
     backButtonElement.addEventListener("click", () =>{
         console.log("you pressed back, going to home")
         clearChildren(mainElement)
-        document.querySelector(".container").append(displayHomeView(allAlbumJson))
+        document.querySelector(".container").append(displayHomeView(albums))
     });
 
     editButtonElement.addEventListener("click", () =>{
         console.log("you presed Edit Page, putting down the edit boxes")
         clearChildren(mainElement)
-        document.querySelector(".container").append(editAlbumView(album))
+        document.querySelector(".container").append(editAlbumView(album, albums))
     })
 
     album.songs.forEach(song => {
@@ -75,7 +75,7 @@ const displayAlbumView = function(album) {
         songLiElement.addEventListener("click", () => {
             console.log("you clicked a song"),
             clearChildren(mainElement)
-            document.querySelector(".container").append(displaySongView(album, song))
+            document.querySelector(".container").append(displaySongView(album, song, albums))
         });
     });
 

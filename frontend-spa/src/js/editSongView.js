@@ -1,7 +1,7 @@
 import { displayAlbumView, clearChildren } from "./displayAlbumView.js";
 import { displaySongView } from "./displaySongView.js";
 
-const editSongView = function(album, song) {
+const editSongView = function(album, song, albums) {
     const mainElement = document.createElement("main");
     
     const pageButtonsElement = document.createElement("div");
@@ -39,6 +39,7 @@ const editSongView = function(album, song) {
                 songTitleInput.setAttribute("type", "text");
                 songTitleInput.setAttribute("placholder", "New song title");
                 songTitleInput.setAttribute("name", "songTitle");
+                songTitleInput.setAttribute("value", song.title);
                 titleDivElement.appendChild(songTitleInput);
 
             const artistAlbumDivElement = document.createElement("div");
@@ -67,11 +68,12 @@ const editSongView = function(album, song) {
                 // songDurationElement.innerText = "";
                 // songLengthDivElement.appendChild(songDurationPElement);
 
-                const songDurationInput = document.createElement("input");
-                songDurationInput.setAttribute("type", "text");
-                songDurationInput.setAttribute("placeholder", "#m##s");
-                songDurationInput.setAttribute("name", "songDuration");
-                songLengthDivElement.appendChild(songDurationInput);
+                // const songDurationInput = document.createElement("input");
+                // songDurationInput.setAttribute("type", "text");
+                // songDurationInput.setAttribute("placeholder", "#m##s");
+                // songDurationInput.setAttribute("name", "songDuration");
+                // songDurationInput.setAttribute("value", song.duration);
+                // songLengthDivElement.appendChild(songDurationInput);
 
             const lyricsDivElement = document.createElement("div");
             lyricsDivElement.classList.add("lyricsDiv");
@@ -89,6 +91,7 @@ const editSongView = function(album, song) {
 
                 const lyricsTextArea = document.createElement("textarea");
                 lyricsTextArea.setAttribute("name", "songLyrics");
+                lyricsTextArea.setAttribute("value", song.lyrics);
                 lyricsDivElement.appendChild(lyricsTextArea);
 
         const hiddenIdInput = document.createElement("input");
@@ -111,7 +114,7 @@ const editSongView = function(album, song) {
     editButtonElement.addEventListener("click", () =>{
         console.log("you presed Stop Edit Page, hopefully you hit the submit button if you wanted to save your changes")
         clearChildren(mainElement)
-        document.querySelector(".container").append(displaySongView(album, song))
+        document.querySelector(".container").append(displaySongView(album, song, albums))
     });
     submitButton.addEventListener("click", ()=>{
         console.log("this is the submit button")
@@ -119,6 +122,7 @@ const editSongView = function(album, song) {
             id: song.id,
             title: document.forms["albumForm"].elements["songTitle"].value,
             lyrics: document.forms["albumForm"].elements["songLyrics"].value
+            // duration: document.forms["albumForm"].elements["songDuration"].value
         }
         fetch("", {
             

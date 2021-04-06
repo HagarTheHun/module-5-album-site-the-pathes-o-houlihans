@@ -1,6 +1,6 @@
  import { clearChildren } from "./displayAlbumView.js";
  import { displayHomeView } from "./displayHomeView.js";
- import { allAlbumJson } from "./sampleAllAlbums.js";
+//  import { allAlbumJson } from "./sampleAllAlbums.js";
  import { createFooter } from "./Footer.js"
 
 const createHeader = function () {
@@ -12,15 +12,15 @@ const createHeader = function () {
     header.appendChild(title);
     //header.innerText = "JukeBox"
     console.log(header);
-    title.addEventListener("click", () => {
-        console.log("Going Home...")
-        console.log(document.querySelector(".container"))
-        clearChildren(document.querySelector(".container"))
-        document.querySelector(".container").prepend(createHeader());
-        document.querySelector(".container").append(displayHomeView(allAlbumJson));
+    // title.addEventListener("click", () => {
+    //     console.log("Going Home...")
+    //     console.log(document.querySelector(".container"))
+    //     clearChildren(document.querySelector(".container"))
+    //     document.querySelector(".container").prepend(createHeader());
+    //     document.querySelector(".container").append(displayHomeView(allAlbumJson));
         
         /* a little bugged, consider not basing everything off of container, but off each thing as it is made*/
-    });
+    // });
     return header;
 }
 
