@@ -110,29 +110,28 @@ public class MainController {
         return songStorage.retrieveAllSongs();
     }
 
-
-    @PatchMapping("/api/song/{songId}/")
-    public Song updateSong(@RequestBody String titleToAdd, @RequestBody String durationToAdd,
-                           @RequestBody String lyricsToAdd, @PathVariable Long songId){
-        Song song = songStorage.retrieveSongById(songId);
-        Song updatedSong = new Song();
-        updatedSong.setTitle(titleToAdd);
-        updatedSong.setDuration(durationToAdd);
-        updatedSong.setLyrics(lyricsToAdd);
-        if (updatedSong.getTitle() != null) {
-            song.setTitle(updatedSong.getTitle());
-        }
-        if (updatedSong.getDuration() != null) {
-            song.setDuration(updatedSong.getDuration());
-        }
-        if (updatedSong.getLyrics() != null) {
-            song.setLyrics(updatedSong.getLyrics());
-        }
-        songStorage.saveSong(song);
-        return songStorage.retrieveSongById(songId);
-
-    }
-
+//    @PatchMapping("/api/song/{songId}/")
+//    public Song updateSong(@RequestBody String titleToAdd, @RequestBody String durationToAdd,
+//                           @RequestBody String lyricsToAdd, @PathVariable Long songId){
+//        Song song = songStorage.retrieveSongById(songId);
+//        Song updatedSong = new Song();
+//        updatedSong.setTitle(titleToAdd);
+//        updatedSong.setDuration(durationToAdd);
+//        updatedSong.setLyrics(lyricsToAdd);
+//        if (updatedSong.getTitle() != null) {
+//            song.setTitle(updatedSong.getTitle());
+//        }
+//        if (updatedSong.getDuration() != null) {
+//            song.setDuration(updatedSong.getDuration());
+//        }
+//        if (updatedSong.getLyrics() != null) {
+//            song.setLyrics(updatedSong.getLyrics());
+//        }
+//        songStorage.saveSong(song);
+//        return songStorage.retrieveSongById(songId);
+//
+//    }
+//
 
 }
 
