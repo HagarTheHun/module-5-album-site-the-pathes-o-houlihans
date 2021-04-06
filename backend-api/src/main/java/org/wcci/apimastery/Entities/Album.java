@@ -13,8 +13,11 @@ public class Album {
     private Long id;
     private String name;
     private String artist;
+    private int ratings;
     private String img;
     @OneToMany
+
+//    @ElementCollection
     private List<Comment> comments;
 
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL,orphanRemoval = true)
@@ -24,16 +27,23 @@ public class Album {
         this.songs = songs;
     }
 
-    public Album(String name, String artist) {
+//    public Album(String name, String artist) {
+//        this.name = name;
+//        this.artist = artist;
+//        this.img = img;
+//        this.songs = new ArrayList<>();
+
+
+    public Album(String name, String artist, int ratings, String img ) {
         this.name = name;
         this.artist = artist;
+        this.ratings = ratings;
         this.img = img;
         this.songs = new ArrayList<>();
-
-
-
-
     }
+
+
+
     public Album () {
 
     }
@@ -52,6 +62,10 @@ public class Album {
 
     public String getImg() {
         return img;
+    }
+
+    public int getRatings() {
+        return ratings;
     }
 
     public List<Comment> getComment() {
