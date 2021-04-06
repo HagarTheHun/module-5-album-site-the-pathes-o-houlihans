@@ -17,7 +17,8 @@ const editAlbumView = function(album) {
         editButtonElement.innerText = "Stop Edit";
         pageButtonsElement.appendChild(editButtonElement);
 
-    const formElement = document.createElement("form"); 
+    const formElement = document.createElement("form");
+    formElement.setAttribute("name", "albumForm");
     mainElement.appendChild(formElement);
 
         const albumDataElement = document.createElement("div");
@@ -36,6 +37,7 @@ const editAlbumView = function(album) {
                 albumCoverInput.setAttribute("type", "text");
                 albumCoverInput.setAttribute("placeholder", "Put an image url here");
                 albumCoverInput.setAttribute("name", "albumCover");
+                albumCoverInput.setAttribute("value", album.img);
                 albumCoverDivElement.appendChild(albumCoverInput);
 
             const albumTitleDivElement = document.createElement("div");
@@ -51,6 +53,7 @@ const editAlbumView = function(album) {
                 albumTitleInput.setAttribute("type", "text");
                 albumTitleInput.setAttribute("placeholder", "New Album Title");
                 albumTitleInput.setAttribute("name", "name");
+                albumTitleInput.setAttribute("value", album.name);
                 albumTitleDivElement.appendChild(albumTitleInput);
 
             const albumArtistDivElement = document.createElement("div");
@@ -66,6 +69,7 @@ const editAlbumView = function(album) {
                 albumArtistInput.setAttribute("type", "text");
                 albumArtistInput.setAttribute("placeholder", "New Artist");
                 albumArtistInput.setAttribute("name", "artist");
+                albumArtistInput.setAttribute("value", album.artist)
                 albumArtistDivElement.appendChild(albumArtistInput);
 
             const descriptionDivElement = document.createElement("div");
@@ -77,10 +81,10 @@ const editAlbumView = function(album) {
                 descriptionElement.innerText = "This is a discription of the album that should probably be a value in the pojo."
                 descriptionDivElement.appendChild(descriptionElement);
 
-                const descriptionTextarea = document.createElement("textarea");
-                descriptionTextarea.setAttribute("placeholder", "New description here");
-                descriptionTextarea.setAttribute("name", "discription");
-                descriptionDivElement.appendChild(descriptionTextarea);
+                // const descriptionTextarea = document.createElement("textarea");
+                // descriptionTextarea.setAttribute("placeholder", "New description here");
+                // descriptionTextarea.setAttribute("name", "discription");
+                // descriptionDivElement.appendChild(descriptionTextarea);
 
         const submitButton = document.createElement("button");
         submitButton.setAttribute("type", "button"); //can't actually be submit because it will reload the page
@@ -111,7 +115,28 @@ const editAlbumView = function(album) {
     });
 
     submitButton.addEventListener("click", ()=>{
-        console.log("this is the submit button")
+        
+
+        let data = {
+            id: album.id,
+            name: document.forms["albumForm"].elements["name"].value,
+            artist: document.forms["albumForm"].elements["artist"].value,
+            img: document.forms["albumForm"].elements["albumCover"].value,
+
+        }
+        console.log("this is the submit button ", data);
+        fetch("http://localhost:8080/api/albums",{
+            method: 'PUT',
+            headers:{'content-type':'application/json'},
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json()) 
+        .then(albums => albums.find(a => a.id === album.id))
+        .then(thisAlbum => {
+            clearChildren(mainElement)
+            document.querySelector(".container").append(displayAlbumView(thisAlbum))
+        })
+        .catch(ERROR => console.log(ERROR));
         //then send the info where it goes to update
     });
                 

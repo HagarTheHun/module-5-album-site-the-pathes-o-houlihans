@@ -4,6 +4,8 @@
  import { editAlbumView } from "./editAlbumView.js";
 
 const displayAlbumView = function(album) {
+    console.log("displaying", album);
+    
     const mainElement = document.createElement("main");
 
     const pageButtonsElement = document.createElement("div");
