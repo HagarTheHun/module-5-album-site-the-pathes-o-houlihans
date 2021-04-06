@@ -19,10 +19,11 @@ const editSongView = function(album, song) {
         pageButtonsElement.appendChild(editButtonElement);
 
     const formElement = document.createElement("form");
-    // needs some atributes
+    formElement.setAttribute("name", "albumForm");
     mainElement.appendChild(formElement);
 
         const descriptionElement = document.createElement("div"); /*this part might need changed*/
+        
         formElement.appendChild(descriptionElement);
         
             const titleDivElement = document.createElement("div");
@@ -114,7 +115,14 @@ const editSongView = function(album, song) {
     });
     submitButton.addEventListener("click", ()=>{
         console.log("this is the submit button")
-        //then send the info where it goes to update
+        let data = {
+            id: song.id,
+            title: document.forms["albumForm"].elements["songTitle"].value,
+            lyrics: document.forms["albumForm"].elements["songLyrics"].value
+        }
+        fetch("", {
+            
+        })
     });
 
 

@@ -114,33 +114,6 @@ const editAlbumView = function(album) {
         document.querySelector(".container").append(displayAlbumView(album))
     });
 
-    submitButton.addEventListener("click", ()=>{
-        
-
-        let data = {
-            id: album.id,
-            name: document.forms["albumForm"].elements["name"].value,
-            artist: document.forms["albumForm"].elements["artist"].value,
-            img: document.forms["albumForm"].elements["albumCover"].value,
-
-        }
-        console.log("this is the submit button ", data);
-        fetch("http://localhost:8080/api/albums",{
-            method: 'PUT',
-            headers:{'content-type':'application/json'},
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json()) 
-        .then(albums => albums.find(a => a.id === album.id))
-        .then(thisAlbum => {
-            clearChildren(mainElement)
-            document.querySelector(".container").append(displayAlbumView(thisAlbum))
-        })
-        .catch(ERROR => console.log(ERROR));
-        //then send the info where it goes to update
-    });
-                
-
             album.songs.forEach(song => {
                 let songLiElement = document.createElement("li");
                 songLiElement.innerText = song.title;
@@ -163,6 +136,32 @@ const editAlbumView = function(album) {
                 //     document.querySelector(".container").append(displaySongView(album, song))
                 // });
             });
+
+            submitButton.addEventListener("click", ()=>{
+        
+
+        let data = {
+            id: album.id,
+            name: document.forms["albumForm"].elements["name"].value,
+            artist: document.forms["albumForm"].elements["artist"].value,
+            img: document.forms["albumForm"].elements["albumCover"].value,
+            songs: album.songs
+        }
+        console.log("this is the submit button ", data);
+        fetch("http://localhost:8080/api/albums",{
+            method: 'PUT',
+            headers:{'content-type':'application/json'},
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json()) 
+        .then(albums => albums.find(a => a.id === album.id))
+        .then(thisAlbum => {
+            clearChildren(mainElement)
+            document.querySelector(".container").append(displayAlbumView(thisAlbum))
+        })
+        .catch(ERROR => console.log(ERROR));
+        //then send the info where it goes to update
+    });
             
 
    return mainElement;
