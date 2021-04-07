@@ -25,7 +25,57 @@ PATCH localhost:8080/api/albums/1/songs
 content-Type: application/json
 
 {  "title": "The Song of the year",
-  "lyrics": "These are not the lyrics ;)"}
+  "lyrics":" This is not a lyrics "
+
+}
+### Remove song from collection and update album
+
+PATCH localhost:8080/api/albums/1/removeSong
+content-Type: application/json
+
+{"id": "8"}
 
 
+###  Get all song
+GET http://localhost:8080/api/songs
 
+### Get specific song
+GET localhost:8080/api/song/12
+
+### Delete a specific Song
+DELETE http://localhost:8080/api/song/7
+
+### Add a new song
+POST localhost:8080/api/song
+Content-Type: application/json
+
+{
+  "title": "Greatest Love of all",
+  "lyrics": "Best Song",
+  "duration": "5:50 minutes",
+  "ratings": 5
+}
+
+### Update's a song values
+PUT http://localhost:8080/api/songs
+Content-Type: application/json
+
+{
+  "id": 12,
+  "title": "Love song",
+  "lyrics": "Best Song",
+  "duration": "5:50 minutes",
+  "ratings": 5,
+  "comments": []
+}
+
+### update specific element of our JSON
+PATCH localhost:8080/api/song/12/
+content-Type: application/json
+
+{
+  "title": " Love of all",
+  "duration": "5:50 minutes",
+  "lyrics": "Song"
+
+}

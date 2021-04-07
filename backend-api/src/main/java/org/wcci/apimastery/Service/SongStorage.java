@@ -13,6 +13,9 @@ public class SongStorage {
     public Iterable<Song> retrieveAllSong() {
         return songRepository.findAll();
     }
+    public void saveSong(Song songToSave) {
+        songRepository.save(songToSave);
+    }
 
 
 

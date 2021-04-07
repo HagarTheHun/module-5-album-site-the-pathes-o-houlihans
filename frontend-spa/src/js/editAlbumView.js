@@ -128,13 +128,26 @@ const editAlbumView = function(album, albums) {
                 removeSongButtonElement.addEventListener("click", () =>{
                     console.log("BOOM, destoryed " + song.title);
                     //then send the delete message to the backend
+                    let newAlbums;
+                    fetch(`http://localhost:8080/api/albums/${album.id}/removeSong`, {
+                        method: 'PATCH',
+                        headers:{'content-type':'application/json'},
+                        body: JSON.stringify(song)
+                    })
+                    .then(response => response.json()) 
+                    .then(fetchAlbums =>  newAlbums = fetchAlbums)
+                    .then(newAlbums => newAlbums.find(a => a.id === album.id))
+                    .then(thisAlbum => {
+                        clearChildren(mainElement)
+                        document.querySelector(".container").append(editAlbumView(thisAlbum, newAlbums))
+                    })
                 });
 
                 // songLiElement.addEventListener("click", () => {
                 //     console.log("you clicked a song"),
                 //     clearChildren(mainElement)
                 //     document.querySelector(".container").append(displaySongView(album, song))
-                // });
+                // }); `{id:${song.id}}`
             });
 
         submitButton.addEventListener("click", ()=>{

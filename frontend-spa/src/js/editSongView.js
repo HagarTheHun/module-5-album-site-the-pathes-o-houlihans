@@ -91,7 +91,7 @@ const editSongView = function(album, song, albums) {
 
                 const lyricsTextArea = document.createElement("textarea");
                 lyricsTextArea.setAttribute("name", "songLyrics");
-                lyricsTextArea.setAttribute("value", song.lyrics);
+                lyricsTextArea.innerText = "" + song.lyrics;
                 lyricsDivElement.appendChild(lyricsTextArea);
 
         const hiddenIdInput = document.createElement("input");
@@ -124,9 +124,24 @@ const editSongView = function(album, song, albums) {
             lyrics: document.forms["albumForm"].elements["songLyrics"].value
             // duration: document.forms["albumForm"].elements["songDuration"].value
         }
-        fetch("", {
-            
+        let newAlbums;
+        let updatedAlbum
+        
+        fetch("http://localhost:8080/api/songs", {
+            method: 'PUT',
+            headers:{'content-type':'application/json'},
+            body: JSON.stringify(data)
         })
+        .then(response => response.json())
+        .then(fetchAlbums => newAlbums = fetchAlbums)
+        .then(newAlbums => newAlbums.find(a => a.id === album.id))
+        .then(foundAlbum => updatedAlbum = foundAlbum)
+        .then(updatedAlbum => updatedAlbum.songs.find(s => s.id === song.id))    
+        .then(thisSong => {
+            clearChildren(mainElement)
+            document.querySelector(".container").append(displaySongView(updatedAlbum, thisSong, newAlbums))
+        })
+        .catch(ERROR => console.log(ERROR));
     });
 
 

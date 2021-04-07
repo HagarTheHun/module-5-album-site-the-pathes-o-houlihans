@@ -11,7 +11,7 @@ public class Song {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     private String title;
     @Lob
     private String lyrics;
@@ -46,7 +46,7 @@ public class Song {
         this.album = album;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

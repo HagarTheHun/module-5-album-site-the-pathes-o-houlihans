@@ -5,17 +5,22 @@ import org.wcci.apimastery.Entities.Album;
 import org.wcci.apimastery.Entities.Song;
 import org.wcci.apimastery.Service.AlbumStorage;
 import org.wcci.apimastery.Service.SongRepository;
+import org.wcci.apimastery.Service.SongStorage;
+
+import java.util.Collection;
 
 @RestController
 public class MainController {
     private AlbumStorage albumStorage;
     private SongRepository songRepository;
+    private SongStorage songStorage;
 
 
-    public MainController(AlbumStorage albumStorage, SongRepository songRepository) {
+    public MainController(AlbumStorage albumStorage, SongRepository songRepository, SongStorage songStorage) {
 
         this.albumStorage = albumStorage;
         this.songRepository = songRepository;
+        this.songStorage = songStorage;
     }
 
     @GetMapping("/api/albums")
@@ -60,6 +65,25 @@ public class MainController {
         songRepository.save(song);
         return albumStorage.retrieveAlbumById(albumId);
     }
+
+    @PatchMapping("api/albums/{albumId}/removeSong")
+    public Iterable<Album> removeSongFromAlbum(@PathVariable Long albumId, @RequestBody Song removeSongAtId) {
+        Album album = albumStorage.retrieveAlbumById(albumId);
+        Collection<Song> songCollection = album.getSongs();
+        songCollection.removeIf(s -> s.getId() == removeSongAtId.getId());
+        album.setSongs(songCollection);
+        albumStorage.saveAlbum(album);
+        return albumStorage.retrieveAllAlbums();
+    }
+
+    @PutMapping("/api/songs")
+    public Iterable<Album> editSong(@RequestBody Song songToEdit) {
+        if (songToEdit.getId() != null) {
+            songStorage.saveSong(songToEdit);
+        }
+        return albumStorage.retrieveAllAlbums();
+    }
+
 //    @PatchMapping("/api/albums/{albumId}/songs")
 //    public Album addSongToAlbum(@RequestBody Song songToAdd, @PathVariable Long albumId) {
 //        Album album = albumStorage.retrieveAlbumById(albumId);
